@@ -9,7 +9,7 @@ sudo cp -r /var/lib/jenkins/workspace/leafer /var/www/html
 
 cd /var/www/html/leafer
 
-mysql < /var/lib/jenkins/workspace/leafer/scripts/db_config.sql
+mysql -u root < /var/lib/jenkins/workspace/leafer/scripts/db_config.sql
 mysql -u root -p root < /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
 
 sudo apt install -y maven
