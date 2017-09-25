@@ -1,5 +1,5 @@
 CREATE DATABASE leafer;
--- USE leafer;
+USE leafer;
 
 CREATE TABLE `user` (
   `id` bigint(64) unsigned NOT NULL,
