@@ -1,3 +1,5 @@
+DROP DATABASE leafer;
+
 CREATE DATABASE leafer;
 USE leafer;
 
