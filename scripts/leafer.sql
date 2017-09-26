@@ -1,4 +1,4 @@
-DROP DATABASE leafer;
+DROP DATABASE If EXISTS leafer;
 
 CREATE DATABASE leafer;
 USE leafer;

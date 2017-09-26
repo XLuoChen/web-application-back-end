@@ -15,3 +15,5 @@ sudo apt install -y maven
 
 sudo mvn clean install
 sudo mvn spring-boot:run &
+
+sleep 10
