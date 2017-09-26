@@ -14,4 +14,4 @@ mysql -u root -proot < /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
 sudo apt install -y maven
 
 sudo mvn clean install
-sudo mvn spring-boot:run
+sudo mvn spring-boot:run &

@@ -10,7 +10,7 @@ pipeline{
 
     stage('Deploy'){
       steps{
-        /var/lib/jenkins/workspace/leafer/scripts/deploy.sh &
+        sh '/var/lib/jenkins/workspace/leafer/scripts/deploy.sh'
       }
     }
   }
