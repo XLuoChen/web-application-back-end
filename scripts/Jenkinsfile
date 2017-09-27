@@ -4,7 +4,14 @@ pipeline{
   stages{
     stage('Build'){
       steps{
-        echo 'Build'
+        cd /var/lib/jenkins/workspace/leafer
+        mvn clean install
+      }
+    }
+
+    stage('DB_Migration'){
+      steps{
+        mysql -u root -proot < /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
       }
     }
 

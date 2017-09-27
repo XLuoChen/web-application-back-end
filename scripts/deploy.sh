@@ -1,19 +1,14 @@
 #!/bin/bash
 
-if [ ! -d /var/www/html ]; then
-    sudo mkdir -p /var/www/html
+if [ ! -d /tmp/target ]; then
+    sudo mkdir -p /tmp/target
 fi
 
-sudo rm -rf /var/www/html/leafer
-sudo cp -r /var/lib/jenkins/workspace/leafer /var/www/html
+sudo rm -rf /target
+sudo cp -r /var/lib/jenkins/workspace/leafer/target/leafer-0.1.0.jar /tmp/target
 
-cd /var/www/html/leafer
+cd /tmp/target
 
-mysql -u root -proot < /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
-
-sudo apt install -y maven
-
-sudo mvn clean install
-sudo mvn spring-boot:run &
+java -jar leafer-0.1.0.jar &
 
 sleep 10
