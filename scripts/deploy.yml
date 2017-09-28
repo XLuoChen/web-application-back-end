@@ -1,10 +1,10 @@
 ---
-- hosts: server
+- hosts: default
   become: true
   tasks:
     - copy:
-        src: /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
-        dest: remote@192.168.30.12:/tmp
+        src: /var/lib/jenkins/workspace/leafer/scripts/
+        dest: /tmp
 
     - name: Compress sql file
       command: bzip2 -f /tmp/leafer.sql
@@ -17,7 +17,7 @@
 
     - copy:
         src: /var/lib/jenkins/workspace/leafer/target
-        dest: remote@192.168.30.12:/tmp
+        dest: /tmp
 
     - name: run project with package
       command: java -jar /tmp/target/leafer-0.1.0.jar &
