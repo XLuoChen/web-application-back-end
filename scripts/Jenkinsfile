@@ -11,7 +11,7 @@ pipeline{
 
     stage('Deploy'){
       steps{
-        sh 'ansible-playbook /var/lib/jenkins/workspace/leafer/scripts/deploy.yml -i ./hosts'
+        sh 'ansible-playbook /var/lib/jenkins/workspace/leafer/scripts/deploy.yml'
       }
     }
   }
