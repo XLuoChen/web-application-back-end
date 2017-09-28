@@ -2,8 +2,7 @@
 - hosts: server
   become: true
   tasks:
-    - name: Copy database dump file
-      copy:
+    - copy:
         src: /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
         dest: remote@192.168.30.12:/tmp
 
@@ -17,8 +16,8 @@
         target: /tmp/leafer.sql.bz2
 
     - copy:
-      src: /var/lib/jenkins/workspace/leafer/target
-      dest: remote@192.168.30.12:/tmp
+        src: /var/lib/jenkins/workspace/leafer/target
+        dest: remote@192.168.30.12:/tmp
 
     - name: run project with package
       command: java -jar /tmp/target/leafer-0.1.0.jar &
