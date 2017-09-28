@@ -4,24 +4,14 @@ pipeline{
   stages{
     stage('Build'){
       steps{
-        step{
-          cd /var/lib/jenkins/workspace/leafer
-        }
-        step{
-          mvn clean install
-        }
-      }
-    }
-
-    stage('DB_Migration'){
-      steps{
-        sh '/var/lib/jenkins/workspace/leafer/scripts/db_config.sh'
+          sh 'cd /var/lib/jenkins/workspace/leafer'
+          sh 'mvn clean install'
       }
     }
 
     stage('Deploy'){
       steps{
-        sh '/var/lib/jenkins/workspace/leafer/scripts/deploy.sh'
+        sh 'ansible-playbook deploy.yml'
       }
     }
   }

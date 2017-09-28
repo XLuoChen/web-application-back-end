@@ -1,0 +1,25 @@
+---
+- hosts: server
+  become: true
+  tasks:
+    - name: Copy database dump file
+      copy:
+        src: /var/lib/jenkins/workspace/leafer/scripts/leafer.sql
+        dest: remote@192.168.30.12:/tmp
+
+    - name: Compress sql file
+      command: bzip2 -f /tmp/leafer.sql
+
+    - name: Restore database
+      mysql_db:
+        name: my_db
+        state: import
+        target: /tmp/leafer.sql.bz2
+
+    - copy:
+      src: /var/lib/jenkins/workspace/leafer/target
+      dest: remote@192.168.30.12:/tmp
+
+    - name: run project with package
+      command: java -jar /tmp/target/leafer-0.1.0.jar &
+
