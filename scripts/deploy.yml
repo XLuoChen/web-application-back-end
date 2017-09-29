@@ -15,10 +15,16 @@
         state: import
         target: /tmp/leafer.sql.bz2
 
+    - name: Stop tomcat7 service
+      service:
+        name: tomcat7
+        state: stoped
+
     - copy:
-        src: /var/lib/jenkins/workspace/leafer/target
-        dest: /tmp
+      src: /var/lib/jenkins/workspace/leafer/target/leafer.war
+      dest: /var/lib/tomcat7/webapps
 
-    - name: run project with package
-      command: java -jar /tmp/target/leafer-0.1.0.jar &
-
+    - name: Start tomcat7 service
+      service:
+        name: tomcat7
+        state: started

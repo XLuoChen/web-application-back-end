@@ -7,8 +7,7 @@
 
     <groupId>org.ziwenxie</groupId>
     <artifactId>leafer</artifactId>
-    <version>0.1.0</version>
-
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -159,6 +158,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>leafer</warName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
