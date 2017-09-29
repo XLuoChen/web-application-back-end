@@ -10,12 +10,26 @@
         path: /tmp/db_config.sh
         mode: 0755
 
+    - file:
+        path: /tmp/start.sh
+        mode: 0755
+
+    - file:
+        path: /tmp/stop.sh
+        mode: 0755
+
     - name: DB migration
       shell: /tmp/db_config.sh
+
+    - name: stop project
+      shell: /tmp/stop.sh
+
+    - name: delete old project package
+      command: rm /tmp/leafer-1.5.3.RELEASE.jar
 
     - copy:
         src: /var/lib/jenkins/workspace/leafer/target/leafer-1.5.3.RELEASE.jar
         dest: /tmp
 
     - name: start project
-      command: java -jar /tmp/leafer-1.5.3.RELEASE.jar &
+      shell: /tmp/start.sh
