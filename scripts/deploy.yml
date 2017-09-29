@@ -26,7 +26,7 @@
 
     - stat:
         path: /tmp/leafer-1.5.3.RELEASE.jar
-        register: old_package
+      register: old_package
 
     - name: delete old project package
       command: rm /tmp/leafer-1.5.3.RELEASE.jar
