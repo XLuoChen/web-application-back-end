@@ -21,8 +21,8 @@
         state: stoped
 
     - copy:
-      src: /var/lib/jenkins/workspace/leafer/target/leafer.war
-      dest: /var/lib/tomcat7/webapps
+        src: /var/lib/jenkins/workspace/leafer/target/leafer.war
+        dest: /var/lib/tomcat7/webapps
 
     - name: Start tomcat7 service
       service:
