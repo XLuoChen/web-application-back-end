@@ -12,19 +12,25 @@
     - name: Restore database
       mysql_db:
         name: my_db
+        login_user: root
+        login_password: root
         state: import
         target: /tmp/leafer.sql.bz2
 
-    - name: Stop tomcat7 service
-      service:
-        name: tomcat7
-        state: stoped
+#    - name: Stop tomcat7 service
+#      service:
+#        name: tomcat7
+#        state: stoped
 
     - copy:
-        src: /var/lib/jenkins/workspace/leafer/target/leafer.war
-        dest: /var/lib/tomcat7/webapps
+        src: /var/lib/jenkins/workspace/leafer/target/leafer.jar
+        dest: /tmp
 
-    - name: Start tomcat7 service
-      service:
-        name: tomcat7
-        state: started
+    - name: start project
+      command: java -jar /tmp/leafer.jar &
+
+
+#    - name: Start tomcat7 service
+#      service:
+#        name: tomcat7
+#        state: started

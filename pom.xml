@@ -7,7 +7,7 @@
 
     <groupId>org.ziwenxie</groupId>
     <artifactId>leafer</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
