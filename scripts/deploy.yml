@@ -24,8 +24,13 @@
     - name: stop project
       shell: /tmp/stop.sh
 
+    - stat:
+        path: /tmp/leafer-1.5.3.RELEASE.jar
+        register: old_package
+
     - name: delete old project package
       command: rm /tmp/leafer-1.5.3.RELEASE.jar
+      when: old_package.stat.exists
 
     - copy:
         src: /var/lib/jenkins/workspace/leafer/target/leafer-1.5.3.RELEASE.jar
