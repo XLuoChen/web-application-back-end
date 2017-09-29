@@ -6,31 +6,16 @@
         src: /var/lib/jenkins/workspace/leafer/scripts/
         dest: /tmp
 
-    - name: Compress sql file
-      command: bzip2 -f /tmp/leafer.sql
+    - file:
+        path: /tmp/db_config.sh
+        mode: 0755
 
-    - name: Restore database
-      mysql_db:
-        name: my_db
-        login_user: root
-        login_password: root
-        state: import
-        target: /tmp/leafer.sql.bz2
-
-#    - name: Stop tomcat7 service
-#      service:
-#        name: tomcat7
-#        state: stoped
+    - name: DB migration
+      shell: /tmp/db_config.sh
 
     - copy:
-        src: /var/lib/jenkins/workspace/leafer/target/leafer.jar
+        src: /var/lib/jenkins/workspace/leafer/target/leafer-1.5.3.RELEASE.jar
         dest: /tmp
 
     - name: start project
-      command: java -jar /tmp/leafer.jar &
-
-
-#    - name: Start tomcat7 service
-#      service:
-#        name: tomcat7
-#        state: started
+      command: java -jar /tmp/leafer-1.5.3.RELEASE.jar &
